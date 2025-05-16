@@ -11,14 +11,15 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return redirect('/success')
+        db_sess = db_session.create_session()
+        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        if user and user.check_password(form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            return redirect("/")
+        return render_template('login.html',
+                               message="Неправильный логин или пароль",
+                               form=form)
     return render_template('login.html', title='Авторизация', form=form)
 
-#@app.route('/')
-#@app.route('/index')
-#def index():
-    #user = "Ученик Яндекс.Лицея"
-    #return render_template('index_1.html', title='Домашняя страница',
-                           #username=user)
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

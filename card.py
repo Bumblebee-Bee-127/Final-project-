@@ -3,6 +3,8 @@ from flask import Flask, url_for, request
 i = 0
 app = Flask(__name__)
 
+from card_2 import card_d
+
 @app.route(f'/')
 def card():
     return f'''<!DOCTYPE html>

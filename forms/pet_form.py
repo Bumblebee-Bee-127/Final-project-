@@ -3,76 +3,7 @@ from flask import Flask, url_for, request
 app = Flask(__name__)
 
 
-@app.route('/')
-def master():
-    return "Миссия Колонизация Марса"
-
-
-@app.route('/index')
-def index():
-    return "И на Марсе будут яблони цвести!"
-
-
-@app.route('/promotion')
-def promotion():
-    return ("Человечество вырастает из детства.<br>Человечеству мала одна " +
-            "планета.<br>Мы сделаем обитаемыми безжизненные пока планеты.<" +
-            "br>И начнем с Марса!<br>Присоединяйся!")
-
-
-@app.route('/image_mars')
-def image_mars():
-    return f'''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Привет, Марс!</title>
-</head>
-<body>
-    <h1>Жди нас, Марс!</h1>
-    <img src="{url_for('static', filename='img/mars.png')}">
-</body>
-</html>'''
-
-
-@app.route('/promotion_image')
-def promotion_image():
-    return f'''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Колонизация</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-          crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css"
-          href="{url_for('static', filename='css/style.css')}">
-</head>
-<body>
-<h1>Жди нас, Марс!</h1>
-<img src="{url_for('static', filename='img/mars.png')}">
-<ul class="list-group">
-    <li class="list-group-item list-group-item-primary">Человечество вырастает
-        из детства.
-    </li>
-    <li class="list-group-item list-group-item-secondary">Человечеству мало
-        одной планеты.
-    </li>
-    <li class="list-group-item list-group-item-success">Мы сделаем обитаемыми
-        безжизненные пока планеты.
-    </li>
-    <li class="list-group-item list-group-item-danger">И начнем с Марса!</li>
-    <li class="list-group-item list-group-item-warning">Присоединяйся!</li>
-</ul>
-</body>
-</html>'''
-
-
-@app.route('/astronaut_selection', methods=['POST', 'GET'])
+@app.route('/pet_form', methods=['POST', 'GET'])
 def astronaut_selection():
     if request.method == 'GET':
 
@@ -80,7 +11,7 @@ def astronaut_selection():
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Колонизация</title>
+    <title>Регистрация</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -94,8 +25,7 @@ def astronaut_selection():
 <body>
 <h2>Анкета вашего питомца</h2>
 <h3>для регистрации</h3>
-</div>
-    <button type="submit" class="btn btn-primary">Отправить</button>
+
 <div>
     <form class="login_form" method="post" enctype="multipart/form-data">
         <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Введите кличку" name="name">

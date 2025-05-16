@@ -1,16 +1,69 @@
-from flask import Flask, url_for, request
+from flask import Flask
+
 
 i = 0
 app = Flask(__name__)
 
-from user_form import *
 from av import *
-from card import card
+
+
+@app.route('/user_form', methods=['POST', 'GET'])
+def form():
+    if request.method == 'GET':
+        return f'''<!doctype html>
+                        <html lang="en">
+                          <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
+                            <title>Регистрация пользователя</title>
+                          </head>
+                          <body>
+                            <h1>Регистрация</h1>
+                            <div>
+                                <form class="login_form" method="post" enctype="multipart/form-data">
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Введите адрес почты" name="email">
+                                    <input type="password" class="form-control" id="password" placeholder="Введите пароль" name="password">
+                                    <input type="age" class="form-control" id="age" placeholder="Введите возраст" name="age">
+
+                                    <div class="form-group">
+                                        <label for="about">Немного о себе</label>
+                                        <textarea class="form-control" id="about" rows="3" name="about"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="form-check">Укажите пол</label>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="sex" id="male" value="male" checked>
+                                          <label class="form-check-label" for="male">
+                                            Мужской
+                                          </label>
+                                        </div>
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="radio" name="sex" id="female" value="female">
+                                          <label class="form-check-label" for="female">
+                                            Женский
+                                          </label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+                                </form>
+                            </div>
+                          </body>
+                        </html>'''
+    elif request.method == 'POST':
+        print(request.form['email'])
+        print(request.form['password'])
+        print(request.form['age'])
+        print(request.form['about'])
+        print(request.form['accept'])
+        print(request.form['sex'])
+        return "Форма отправлена"
 
 
 @app.route('/')
-
-@app.route('/index')
 def carousel():
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -29,8 +82,8 @@ def carousel():
 </head>   
 <body>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-  <button type="button" class="btn btn-primary">Primary</button>
-  <button type="button" class="btn btn-secondary">Secondary</button>
+  <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/login';">Войти</button>
+  <button type="button" class="btn btn-secondary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/user_form';">Зарегистрироваться</button>
 </div>
    </a>
 </head>
@@ -39,19 +92,19 @@ def carousel():
     <div id="carouselWithControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{url_for('static', filename='img/pet_1.png')}" class="d-block w-100" alt="Pet 1">
+            <img src="{url_for('static', filename='img/pet_1.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 1">
           </div>
           <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_2.png')}" class="d-block w-100" alt="Pet 2">
+            <img src="{url_for('static', filename='img/pet_2.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 2">
           </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_3.png')}" class="d-block w-100" alt="Pet 3">
+            <img src="{url_for('static', filename='img/pet_3.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 3">
             </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_4.png')}" class="d-block w-100" alt="Pet 4">
+            <img src="{url_for('static', filename='img/pet_4.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 4">
           </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_5.png')}" class="d-block w-100" alt="Pet 5">
+            <img src="{url_for('static', filename='img/pet_5.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 5">
           </div>
 
        </div>
@@ -67,83 +120,8 @@ def carousel():
 </body>
 </html>'''
 
-@app.route('/image_sample')
-def image():
-    return f'''<img src="{url_for('static', filename='img/123.jpg')}"
-    alt="здесь должна была быть картинка, но не нашлась">'''
 
 
-@app.route('/i')
-def show_i():
-    global i
-    i += 1
-    return str(i)
-
-
-@app.route('/greeting/<username>')
-def greeting(username):
-    return f'''<!doctype html>
-    <html lang="en">
-    <head>
-    <some static>
-    <title>Привет, {username}</title>
-    </head>
-    <body>
-    <h1>Привет, {username}!</h1>
-    </body>
-    </html>'''
-
-
-@app.route('/two_params/<username>/<int:number>')
-def two_params(username, number):
-    return f'''<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Пример с несколькими параметрами</title>
-</head>
-<body>
-<h2>{username}</h2>
-<div>Это первый параметр и его тип: {str(type(username))[1:-1]}</div>
-<h2>{number}</h2>
-<div>Это второй параметр и его тип: {str(type(number))[1:-1]}</div>
-</body>
-</html>'''
-
-
-
-
-
-@app.route('/sample_file_upload', methods=['POST', 'GET'])
-def sample_file_upload():
-    if request.method == 'GET':
-        return f'''<!doctype html>
-                        <html lang="en">
-                          <head>
-                            <meta charset="utf-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                             <link rel="stylesheet"
-                             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-                             integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-                             crossorigin="anonymous">
-                            <link rel="stylesheet" type="text/css" href="{url_for('static', filename='css/style.css')}" />
-                            <title>Пример загрузки файла</title>
-                          </head>
-                          <body>
-                            <h1>Загрузим файл</h1>
-                            <form method="post" enctype="multipart/form-data">
-                               <div class="form-group">
-                                    <label for="photo">Выберите файл</label>
-                                    <input type="file" class="form-control-file" id="photo" name="file">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Отправить</button>
-                            </form>
-                          </body>
-                        </html>'''
-    elif request.method == 'POST':
-        f = request.files['file']
-        print(f.read())
-        return login()
 
 
 

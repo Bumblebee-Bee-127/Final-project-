@@ -1,11 +1,23 @@
+from flask import Flask
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import PasswordField, BooleanField, SubmitField, EmailField
 from wtforms.validators import DataRequired
 
+from flask_login import LoginManager
+
+app = Flask(__name__)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Логин', validators=[DataRequired()])
+    email = EmailField('Почта', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
