@@ -81,6 +81,17 @@ def carousel():
           href="{url_for('static', filename='css/style.css')}">
 </head>   
 <body>
+ <div class="container">
+        <div class="content-text text-center">
+            <h1>Добро пожаловать в нашу ветеринарную клинику "Забота о друзьях"!</h1>
+            <p class="lead">
+                Мы предоставляем полный спектр услуг по уходу за вашими любимцами,
+                от профилактических осмотров до сложных операций.
+                Наши специалисты с любовью и профессионализмом подходят к каждому пациенту.
+            </p>
+            <p>
+                Доверьте здоровье ваших питомцев нам!
+            </p>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/login';">Войти</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/register';">Зарегистрироваться</button>
