@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 
 from user_form import *
+from main import *
 
 @app.route('/m')
 def navigator():
@@ -26,7 +27,7 @@ def navigator():
 <body>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/';">Выйти</button>
-  <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/';">Добавить питомца</button>
+  <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/pet_form';">Добавить питомца</button>
 </div>
 <div class="card" style="width: 20rem;">
   <img src="{url_for('static', filename=f'pictures/cat_1.png')}" style="width: 48rem;" class="card-img-top" alt="Pet 1">
