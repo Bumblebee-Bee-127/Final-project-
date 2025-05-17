@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 
 @app.route('/pet_form', methods=['POST', 'GET'])
-def astronaut_selection():
+def pet_form():
     if request.method == 'GET':
 
         return f'''<!DOCTYPE html>
@@ -23,8 +23,8 @@ def astronaut_selection():
           href="{url_for('static', filename='css/style.css')}">
 </head>
 <body>
-<h2>Анкета вашего питомца</h2>
-<h3>для регистрации</h3>
+<h2>Анкета для регистрации</h2>
+<h3>вашего питомца</h3>
 
 <div>
     <form class="login_form" method="post" enctype="multipart/form-data">
@@ -43,41 +43,9 @@ def astronaut_selection():
             </select>
         </div>
         <div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_1" name="prof_1">
-                <label class="form-check-label" for="prof_1">Инженер-исследователь</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_2" name="prof_2">
-                <label class="form-check-label" for="prof_2">Инженер-строитель</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_3" name="prof_3">
-                <label class="form-check-label" for="prof_3">Пилот</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_4" name="prof_4">
-                <label class="form-check-label" for="prof_4">Метеоролог</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_5" name="prof_5">
-                <label class="form-check-label" for="prof_5">Инженер по жизнеобеспечению</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_6" name="prof_6">
-                <label class="form-check-label" for="prof_6">Инженер по радиационной защите</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_7" name="prof_7">
-                <label class="form-check-label" for="prof_7">Врач</label>
-            </div>
-            <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="prof_8" name="prof_8">
-                <label class="form-check-label" for="prof_8">Экзобиолог</label>
-            </div>
-        </div>
+            
         <div class="form-group">
-            <label for="form-check">Укажите пол</label>
+            <label for="form-check">Укажите пол питомца</label>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="sex" id="male" value="male" checked>
               <label class="form-check-label" for="male">
@@ -111,7 +79,7 @@ def astronaut_selection():
 </html>'''
     elif request.method == 'POST':
         print(request.form)
-        return master()
+        return Успешно!
 
 
 
