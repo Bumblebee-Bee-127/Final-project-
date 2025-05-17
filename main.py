@@ -83,14 +83,12 @@ def carousel():
 <body>
  <div class="container">
         <div class="content-text text-center">
-            <h1>Добро пожаловать в нашу ветеринарную клинику "Забота о друзьях"!</h1>
+            <h1>Добро пожаловать</h1>
             <p class="lead">
-                Мы предоставляем полный спектр услуг по уходу за вашими любимцами,
-                от профилактических осмотров до сложных операций.
-                Наши специалисты с любовью и профессионализмом подходят к каждому пациенту.
+                Наш сайт призван помогать бездомным животным находить новых друзей, дом и семью.
             </p>
             <p>
-                Доверьте здоровье ваших питомцев нам!
+                А ещё мы несём добро и позитив!
             </p>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/login';">Войти</button>
@@ -99,7 +97,7 @@ def carousel():
    </a>
 </head>
 <body>
-    <h1>Добро пожаловать</h1>
+    <h1></h1>
     <div id="carouselWithControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
           <div class="carousel-item active">
