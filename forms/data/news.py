@@ -6,7 +6,7 @@ from db_session import SqlAlchemyBase
 
 
 class News(SqlAlchemyBase):
-    __tablename__ = 'news'
+    __tablename__ = 'pets'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
@@ -17,8 +17,8 @@ class News(SqlAlchemyBase):
     is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
 
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
-                                sqlalchemy.ForeignKey("users.id"))
+                                sqlalchemy.ForeignKey("pet.id"))
     user = orm.relationship('User')
 
-    news = orm.relationship("News", back_populates='user')
+    news = orm.relationship("Pets", back_populates='user')
 

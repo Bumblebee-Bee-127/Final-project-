@@ -3,25 +3,25 @@ from flask import Flask, url_for, request
 i = 0
 app = Flask(__name__)
 
-from users.convert_image import *
+from convertor.convert_image import *
 
 @app.route(f'/D')
-def card():
+def card(im, name, type, breed, age):
     return f'''<!DOCTYPE html>
         <html lang="en">
         <head>
         <body>
-       <div class="card" style="width: 18rem;">
-  <img src="{url_for('static', filename=f'picture/{}.png')}" style="width: 48rem;" class="card-img-top" alt="Pet 1">
+       <div class="card" style="width: 20rem;">
+  <img src="{url_for('static', filename=f'pictures/{im}.png')}" style="width: 48rem;" class="card-img-top" alt="Pet 1">
   <div class="card-body">
     <h5 class="card-title"></h5>
     <p class="card-text"></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Кличка: {2}</li>
-    <li class="list-group-item">Вид: {2}</li>
-    <li class="list-group-item">Порода: {2}</li>
-    <li class="list-group-item">Возраст: {2}</li>
+    <li class="list-group-item">Кличка: {name}</li>
+    <li class="list-group-item">Вид: {type}</li>
+    <li class="list-group-item">Порода: {breed}</li>
+    <li class="list-group-item">Возраст: {age}</li>
   </ul>
   <div class="card-body">
     <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/info';">дополнительно</button>  
@@ -60,6 +60,10 @@ def card_d():
 </div>
 </body>
 </html>'''
+
+@app.route(f'/in')
+def m():
+    return card('cat_1', 'Luna', 'cat', 'ciam', '4')
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

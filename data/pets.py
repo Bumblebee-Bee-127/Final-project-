@@ -22,7 +22,7 @@ class Pets(SqlAlchemyBase):
     data_image = sqlalchemy.Column(sqlalchemy.String, default=True)
 
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
-                                sqlalchemy.ForeignKey("users.id"))
+                                sqlalchemy.ForeignKey("pet.id"))
     user = orm.relationship('User')
 
     news = orm.relationship("Pets", back_populates='user')

@@ -4,7 +4,7 @@ from flask import Flask
 i = 0
 app = Flask(__name__)
 
-from av import *
+from main_page import *
 
 
 @app.route('/user_form', methods=['POST', 'GET'])
@@ -69,7 +69,7 @@ def carousel():
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Добро пожаловать на сайт!</title>
+    <title>Добро пожаловать!</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
@@ -83,28 +83,28 @@ def carousel():
 <body>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/login';">Войти</button>
-  <button type="button" class="btn btn-secondary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/user_form';">Зарегистрироваться</button>
+  <button type="button" class="btn btn-secondary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/register';">Зарегистрироваться</button>
 </div>
    </a>
 </head>
 <body>
-    <h1>Добро пожаловать на сайт!</h1>
+    <h1>Добро пожаловать</h1>
     <div id="carouselWithControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="{url_for('static', filename='img/pet_1.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 1">
+            <img src="{url_for('static', filename='img/pet_1.png')}" style="height: 30rem;" style="wight: 180rem;" alt="Pet 1">
           </div>
           <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_2.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 2">
+            <img src="{url_for('static', filename='img/pet_2.png')}" style="height: 30rem;" style="wight: 180rem;" alt="Pet 2">
           </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_3.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 3">
+            <img src="{url_for('static', filename='img/pet_3.png')}" style="height: 30rem;" style="wight: 180rem;" alt="Pet 3">
             </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_4.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 4">
+            <img src="{url_for('static', filename='img/pet_4.png')}" style="height: 30rem;" style="wight: 180rem;" alt="Pet 4">
           </div>
            <div class="carousel-item">
-            <img src="{url_for('static', filename='img/pet_5.png')}" style="height: 30rem;" style="wight: 170rem;" alt="Pet 5">
+            <img src="{url_for('static', filename='img/pet_5.png')}" style="height: 30rem;" style="wight: 180rem;" alt="Pet 5">
           </div>
 
        </div>
