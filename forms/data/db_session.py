@@ -3,13 +3,13 @@ import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
 
 
-from _all_models import *
+
 
 SqlAlchemyBase = orm.declarative_base()
 
 __factory = None
 
-
+#from _all_models import *
 
 
 def global_init(db_file):
