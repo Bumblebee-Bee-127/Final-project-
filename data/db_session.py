@@ -2,13 +2,15 @@ import sqlalchemy as sa
 import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
 
-#from _all_models import *
 
 
 
 SqlAlchemyBase = orm.declarative_base()
 
 __factory = None
+
+#from _all_models import *
+
 
 def global_init(db_file):
     global __factory
@@ -25,7 +27,7 @@ def global_init(db_file):
     engine = sa.create_engine(conn_str, echo=False)
     __factory = orm.sessionmaker(bind=engine)
 
-    from . import _all_models
+    #from . import _all_models
 
     SqlAlchemyBase.metadata.create_all(engine)
 

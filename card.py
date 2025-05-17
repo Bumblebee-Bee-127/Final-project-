@@ -3,9 +3,9 @@ from flask import Flask, url_for, request
 i = 0
 app = Flask(__name__)
 
-from card_2 import card_d
+from card_2 import *
 
-@app.route(f'/')
+@app.route(f'/D')
 def card():
     return f'''<!DOCTYPE html>
         <html lang="en">
@@ -24,7 +24,7 @@ def card():
     <li class="list-group-item">Возраст: {2}</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Дополнительная информация</a>  
+    <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/info';">дополнительно</button>  
   </div>
 </div>
 </div>

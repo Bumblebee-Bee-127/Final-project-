@@ -3,7 +3,7 @@ from flask import Flask, url_for, request
 i = 0
 app = Flask(__name__)
 
-from main import *
+
 from card import *
 
 @app.route('/z')
@@ -26,6 +26,7 @@ def navigator():
 <body>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/';">Выйти</button>
+  <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/';">Добавить питомца</button>
   
 </div>
 </body>
@@ -36,6 +37,11 @@ def navigator_2():
     for i in range(4):
         return card()
         
+@app.route("/index")
+def index():
+    db_sess = db_session.create_session()
+    news = db_sess.query(News).filter(News.is_private != True)
+    return render_template("index.html", news=news)
 
 
 

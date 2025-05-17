@@ -2,10 +2,11 @@ from flask import Flask
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, BooleanField, SubmitField, EmailField
 from wtforms.validators import DataRequired
-
 from flask_login import LoginManager
 
 app = Flask(__name__)
+
+from data import db_session
 
 login_manager = LoginManager()
 login_manager.init_app(app)

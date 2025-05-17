@@ -20,4 +20,5 @@ class News(SqlAlchemyBase):
                                 sqlalchemy.ForeignKey("users.id"))
     user = orm.relationship('User')
 
-    #news = orm.relationship("News", back_populates='user')
+    news = orm.relationship("News", back_populates='user')
+
