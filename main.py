@@ -81,6 +81,15 @@ def carousel():
           href="{url_for('static', filename='css/style.css')}">
 </head>   
 <body>
+ <div class="container">
+        <div class="content-text text-center">
+            <h1>Добро пожаловать</h1>
+            <p class="lead">
+                Наш сайт призван помогать бездомным животным находить новых друзей, дом и семью.
+            </p>
+            <p>
+                А ещё мы несём добро и позитив!
+            </p>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
   <button type="button" class="btn btn-primary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/login';">Войти</button>
   <button type="button" class="btn btn-secondary btn-lg" onclick="window.location = 'http://127.0.0.1:8080/register';">Зарегистрироваться</button>
@@ -88,7 +97,7 @@ def carousel():
    </a>
 </head>
 <body>
-    <h1>Добро пожаловать</h1>
+    <h1></h1>
     <div id="carouselWithControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
           <div class="carousel-item active">

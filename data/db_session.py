@@ -3,7 +3,7 @@ import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
 
 
-from pets import *
+
 
 SqlAlchemyBase = orm.declarative_base()
 

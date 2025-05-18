@@ -7,19 +7,34 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
-    <title>{{title}}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <title>{{ title }}</title>
 </head>
 <body>
-<header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#"></a>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 mr-3 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Уши и хвосты</span>
+      </a>
 
-    </nav>
-</header>
-<!-- Begin page content -->
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/jobs" class="nav-link {% if request.path == '/jobs' %}active{% endif %}" aria-current="page">Питомцы</a></li>
+        <li class="nav-item"><a href="/job_add" class="nav-link {% if request.path == '/job_add' %}active{% endif %}" aria-current="page">Добавить питомца</a></li>
+
+          {% if current_user.is_authenticated %}
+            <li class="nav-item"><a href="/logout" class="nav-link {% if request.path == '/logout' %}active{% endif %}" aria-current="page">Выйти</a></li>
+          {% else %}
+            <li class="nav-item"><a href="/login" class="nav-link {% if request.path == '/login' %}active{% endif %}" aria-current="page">Войти</a></li>
+            <li class="nav-item"><a href="/register" class="nav-link {% if request.path == '/register' %}active{% endif %}" aria-current="page">Зарегистрироваться</a></li>
+          {% endif %}
+
+      </ul>
+    </header>
+  </div>
 <main role="main" class="container">
     {% block content %}{% endblock %}
-
 </main>
 </body>
 </html>
