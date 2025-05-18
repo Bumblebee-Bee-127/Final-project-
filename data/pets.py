@@ -27,3 +27,10 @@ class Pets(SqlAlchemyBase):
 
     news = orm.relationship("Pets", back_populates='user')
 
+news = News(title="Первая новость", content="Привет блог!",
+            user_id=1, is_private=False)
+db_sess.add(news)
+db_sess.commit()
+
+if __name__ == '__main__':
+    app.run(port=8080, host='127.0.0.1')

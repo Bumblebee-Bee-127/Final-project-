@@ -1,6 +1,9 @@
-from flask import Flask, url_for, request, render_template
+from flask import Flask, render_template, redirect
+from flask_login import LoginManager, login_user, logout_user, current_user
 
-from loginform import *
+
+
+from forms.user import RegisterForm, LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -20,6 +23,18 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
+
+@app.route('/logout')
+#@login_required
+def logout():
+    logout_user()
+    return redirect("/")
+
+
+@app.route('/')
+@app.route('/index')
+def index():
+    return render_template('base.html', title="Главная")
 
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')

@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 from data import db_session
 
 SqlAlchemyBase = orm.declarative_base()
-__factory = None
+
 
 class User(SqlAlchemyBase, UserMixin):
     __tablename__ = 'users'

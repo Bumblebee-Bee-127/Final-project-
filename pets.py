@@ -79,3 +79,6 @@ def main():
                 user_id=1, is_get=False)
     db_sess.add(pet)
     db_sess.commit()
+
+if __name__ == '__main__':
+    main()
